@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Hospital2.Models.Cita>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Consultas</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <t>Estado de la Consulta</t>
+        </th>
+        <th>
+            <t>Fecha de la Consulta</t>
+        </th>
+        <th>
+            <t>Nombre del Paciente</t>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_Cita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paciente.nombre_Paciente)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Cita }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Cita }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Cita })
+        </td>
+    </tr>
+}
+
+</table>

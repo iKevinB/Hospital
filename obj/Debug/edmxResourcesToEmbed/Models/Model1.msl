@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbHospitalModelStoreContainer" CdmEntityContainer="dbHospitalEntities">
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="dbHospitalModel.Cita">
+        <MappingFragment StoreEntitySet="Cita">
+          <ScalarProperty Name="id_Cita" ColumnName="id_Cita" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_Cita" ColumnName="fecha_Cita" />
+          <ScalarProperty Name="id_Paciente" ColumnName="id_Paciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="dbHospitalModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+          <ScalarProperty Name="nombre_Doctor" ColumnName="nombre_Doctor" />
+          <ScalarProperty Name="edad_Doctor" ColumnName="edad_Doctor" />
+          <ScalarProperty Name="especialidad_Doctor" ColumnName="especialidad_Doctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacientes">
+      <EntityTypeMapping TypeName="dbHospitalModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="id_Paciente" ColumnName="id_Paciente" />
+          <ScalarProperty Name="nombre_Paciente" ColumnName="nombre_Paciente" />
+          <ScalarProperty Name="genero_Paciente" ColumnName="genero_Paciente" />
+          <ScalarProperty Name="caso_Paciente" ColumnName="caso_Paciente" />
+          <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbHospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="id_Cita" />
+    </Key>
+    <Property Name="id_Cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_Cita" Type="varchar" MaxLength="50" />
+    <Property Name="id_Paciente" Type="int" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="id_Doctor" />
+    </Key>
+    <Property Name="id_Doctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_Doctor" Type="varchar" MaxLength="50" />
+    <Property Name="edad_Doctor" Type="int" />
+    <Property Name="especialidad_Doctor" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="id_Paciente" />
+    </Key>
+    <Property Name="id_Paciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_Paciente" Type="varchar" MaxLength="50" />
+    <Property Name="genero_Paciente" Type="varchar" MaxLength="50" />
+    <Property Name="caso_Paciente" Type="varchar" MaxLength="50" />
+    <Property Name="id_Doctor" Type="int" />
+  </EntityType>
+  <Association Name="FK__Cita__id_Pacient__29572725">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="id_Paciente" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Paciente__id_Doc__267ABA7A">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="id_Doctor" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbHospitalModelStoreContainer">
+    <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cita__id_Pacient__29572725" Association="Self.FK__Cita__id_Pacient__29572725">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__id_Doc__267ABA7A" Association="Self.FK__Paciente__id_Doc__267ABA7A">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbHospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="id_Cita" />
+    </Key>
+    <Property Name="id_Cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_Cita" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_Paciente" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="Self.FK__Cita__id_Pacient__29572725" FromRole="Cita" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="id_Doctor" />
+    </Key>
+    <Property Name="id_Doctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_Doctor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="edad_Doctor" Type="Int32" />
+    <Property Name="especialidad_Doctor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pacientes" Relationship="Self.FK__Paciente__id_Doc__267ABA7A" FromRole="Doctor" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="id_Paciente" />
+    </Key>
+    <Property Name="id_Paciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_Paciente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genero_Paciente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="caso_Paciente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_Doctor" Type="Int32" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Cita__id_Pacient__29572725" FromRole="Paciente" ToRole="Cita" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK__Paciente__id_Doc__267ABA7A" FromRole="Paciente" ToRole="Doctor" />
+  </EntityType>
+  <Association Name="FK__Cita__id_Pacient__29572725">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="id_Paciente" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Paciente__id_Doc__267ABA7A">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="id_Doctor" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="id_Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbHospitalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Citas" EntityType="Self.Cita" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+    <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+    <AssociationSet Name="FK__Cita__id_Pacient__29572725" Association="Self.FK__Cita__id_Pacient__29572725">
+      <End Role="Paciente" EntitySet="Pacientes" />
+      <End Role="Cita" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__id_Doc__267ABA7A" Association="Self.FK__Paciente__id_Doc__267ABA7A">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Paciente" EntitySet="Pacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

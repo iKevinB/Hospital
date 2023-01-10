@@ -1,0 +1,42 @@
+﻿@model Hospital2.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_Doctor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_Doctor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edad_Doctor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edad_Doctor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.especialidad_Doctor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especialidad_Doctor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Doctor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

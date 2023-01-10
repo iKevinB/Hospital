@@ -1,0 +1,42 @@
+﻿@model Hospital2.Models.Cita
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_Cita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_Cita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.nombre_Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.nombre_Paciente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Cita }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

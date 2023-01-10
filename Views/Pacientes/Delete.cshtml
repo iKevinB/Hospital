@@ -1,0 +1,56 @@
+﻿@model Hospital2.Models.Paciente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_Paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genero_Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genero_Paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caso_Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caso_Paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.nombre_Doctor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.nombre_Doctor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
