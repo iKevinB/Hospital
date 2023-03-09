@@ -1,12 +1,10 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+   
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +19,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.hupo{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 40%;
+    right: 0;
+    margin-right: 8em;
+    position: absolute;
+    margin-top: 50vh;
+    font-weight: bold; 
+    color: black;
+   
+}
+.hupo p, h2{
+    margin: 15px;
+    
+
+}
+.info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    background-color:aqua;
+    border-top-style: dashed;
+    border-bottom-style:dashed;
+}
+.info img{
+    border-radius: 10px;
 }
